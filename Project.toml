@@ -1,0 +1,13 @@
+name = "SlackSDK"
+uuid = "fbce7cdf-2836-403b-b047-729f0088b997"
+authors = ["Avik Sengupta"]
+version = "1.0.0"
+
+[compat]
+julia = "1.6"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
