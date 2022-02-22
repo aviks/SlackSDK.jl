@@ -3,6 +3,11 @@ uuid = "fbce7cdf-2836-403b-b047-729f0088b997"
 authors = ["Avik Sengupta"]
 version = "1.0.0"
 
+[deps]
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+Swagger = "2d69052b-6a58-5cd9-a030-a48559c324ac"
+
 [compat]
 julia = "1.6"
 
