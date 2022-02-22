@@ -2,15 +2,24 @@
 
 [![Build Status](https://github.com/aviks/SlackSDK.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/aviks/SlackSDK.jl/actions/workflows/CI.yml?query=branch%3Amain)
 
+This package provides a fairly complete implemenation of the [Slack Web API](https://api.slack.com/web).
+
 ## Usage
 ```julia
 using SlackSDK
 ```
 
+Access to the Slack api is provided via the `WebClient` struct. Construct it by passing a [token](https://api.slack.com/authentication/token-types) directly. Alternatively, set the token as an environment variable called `SLACK_API_TOKEN` and then use the no-arg constructor. You will most likely want to use a *bot* token here. 
 ```julia
 julia> client = SlackSDK.WebClient(token)
 Slack Web API client, with base url 'https://www.slack.com/api/' and token 'xoxb-206....Yg'
 ```
+
+The list of api methods are documented by slack at https://api.slack.com/methods. It will be helpful to familiarise yourself with the structure of the api before using this package. 
+
+The Slack api methods are generally of the form `group[.subgroup].methodname`. Replace the dots with underscores, and use that name to call the member function on the `WebClient` object you created above. For example, the `chat.postMessage(...)` API method is called using `client.chat_postMessage`, while the `admin.analytics.getFile` method is called using `client.admin_analytics_getFile(...)`. Required arguments should be passed as positional arguments to this function, and optional arguments are passed as keyword arguments. 
+
+> There are some [discrepancies](https://github.com/slackapi/slack-api-specs/issues/70) between the online documentation and the api specs about which arguments are required. In case of doubt, please refer to spec file stored in this repo. Search the method name to find its definiton in the file. 
 
 ```julia
 julia> client.auth_test()
